@@ -1,0 +1,24 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-add-a-full-width-banner-at-the-very-top-of-the-home-page-route-that-displays-the-creator-credits-exactly-as-provided-above-the-existing-hero-section-content-in-homepage-tsx",
+      "featureTitle": "Add a full-width banner at the very top of the Home page (route \"/\") that displays the creator credits exactly as provided, above the existing hero section content in HomePage.tsx.",
+      "files": [
+        "frontend/src/pages/HomePage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

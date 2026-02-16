@@ -1,0 +1,24 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Creator credit banner on Home page",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Add a visually distinct, full-width creator credit banner at the very top of the Home (/) page above the existing hero section, with exact provided text and responsive layout.",
+      "acceptanceCriteria": [
+        "On the Home page, a visually distinct full-width banner appears before the hero section.",
+        "The banner text matches exactly (including line breaks/line separation): \"Created by:\", \"Albin B Tom and Nikita Maria Bino\", \"6 BBA SBA B\", \"of Christ University, Yeshwanthpur\".",
+        "The banner is responsive: on mobile and desktop it remains readable, does not overflow horizontally, and spans edge-to-edge across the viewport.",
+        "No creator banner appears on non-Home routes (e.g., /about, /models)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Insert a new full-width banner element at the top of the HomePage return tree (immediately inside the outermost wrapper, before the existing Hero section). Render the creator credits as four separate lines to preserve the exact line separation, and style with Tailwind utility classes to ensure edge-to-edge width, readable typography at small/large breakpoints, and no horizontal overflow. Keep the banner only in HomePage so it does not appear on other routes. Do not modify any files under frontend/src/components/ui."
+        }
+      ]
+    }
+  ]
+}

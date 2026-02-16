@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Educational website with sections (Homepage, About, Interactive Models, Case Studies, Learning Resources, Quiz/Simulation, Downloads, Contact), plus a full-width creator credit banner at the very top of the Home page.",
+  "architectural_notes": [],
+  "known_issues": [
+    "Prior build/deploy attempt failed with 'Unable to create your app'; user requested rebuilding/redeploying."
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-add-a-full-width-banner-at-the-very-top-of-the-home-page-route-that-displays-the-creator-credits-exactly-as-provided-above-the-existing-hero-section-content-in-homepage-tsx",
+      "title": "Add a full-width banner at the very top of the Home page (route \"/\") that displays the creator credits exactly as provided, above the existing hero section content in HomePage.tsx.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Add a full-width banner at the very top of the Home page with creator credits: \"Created by: Albin B Tom and Nikita Maria Bino / 6 BBA SBA B / of Christ University, Yeshwanthpur\".",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Strategic Game Theory",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

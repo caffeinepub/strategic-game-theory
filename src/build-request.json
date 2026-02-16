@@ -1,0 +1,55 @@
+{
+  "kind": "build_request",
+  "title": "Add creator credit banner to top of Home page",
+  "projectName": "Strategic Game Theory",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Add a full-width banner at the very top of the Home page (route \"/\") that displays the creator credits exactly as provided, above the existing hero section content in HomePage.tsx.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1",
+          "msg-2",
+          "msg-3"
+        ],
+        "quotes": [
+          "Add\nCreated by:\nAlbin B Tom and Nikita Maria Bino\n6 BBA SBA B\nof Christ University, Yeshwanthpur\nAt the top of the website in the home tab",
+          "full‑width banner at the very top",
+          "build"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On the Home page, a visually distinct full-width banner appears before the hero section.",
+        "The banner text matches exactly (including line breaks/line separation): \"Created by:\", \"Albin B Tom and Nikita Maria Bino\", \"6 BBA SBA B\", \"of Christ University, Yeshwanthpur\".",
+        "The banner is responsive: on mobile and desktop it remains readable, does not overflow horizontally, and spans edge-to-edge across the viewport.",
+        "No creator banner appears on non-Home routes (e.g., /about, /models)."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify any files under frontend/src/components/ui (Shadcn UI components are read-only).",
+    "Do not change backend state or add new backend APIs for this UI-only change."
+  ],
+  "nonGoals": [
+    "Adding the creator credit banner site-wide on every page.",
+    "Changing existing Home page hero text, CTA buttons, or navigation behavior."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [
+      "Use English for user-facing text."
+    ],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}
