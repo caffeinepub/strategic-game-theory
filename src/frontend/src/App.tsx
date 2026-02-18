@@ -1,11 +1,14 @@
 import { createRouter, RouterProvider, createRoute, createRootRoute, Outlet } from '@tanstack/react-router';
 import HomePage from './pages/HomePage';
 import AboutGameTheoryPage from './pages/AboutGameTheoryPage';
-import InteractiveModelsPage from './pages/InteractiveModelsPage';
 import CaseStudiesPage from './pages/CaseStudiesPage';
 import LearningResourcesPage from './pages/LearningResourcesPage';
-import QuizSimulationPage from './pages/QuizSimulationPage';
 import ContactFeedbackPage from './pages/ContactFeedbackPage';
+import SimulatorPage from './pages/SimulatorPage';
+import PrisonersDilemmaPage from './pages/simulator/PrisonersDilemmaPage';
+import AuctionBiddingPage from './pages/simulator/AuctionBiddingPage';
+import MarketEntryPage from './pages/simulator/MarketEntryPage';
+import SupplyChainBargainingPage from './pages/simulator/SupplyChainBargainingPage';
 import SiteHeader from './components/SiteHeader';
 import SiteFooter from './components/SiteFooter';
 
@@ -37,12 +40,6 @@ const aboutRoute = createRoute({
   component: AboutGameTheoryPage,
 });
 
-const modelsRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: '/models',
-  component: InteractiveModelsPage,
-});
-
 const caseStudiesRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/case-studies',
@@ -55,26 +52,53 @@ const resourcesRoute = createRoute({
   component: LearningResourcesPage,
 });
 
-const quizRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: '/quiz',
-  component: QuizSimulationPage,
-});
-
 const contactRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/contact',
   component: ContactFeedbackPage,
 });
 
+const simulatorRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/simulator',
+  component: SimulatorPage,
+});
+
+const prisonersDilemmaRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/simulator/prisoners-dilemma',
+  component: PrisonersDilemmaPage,
+});
+
+const auctionBiddingRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/simulator/auction-bidding',
+  component: AuctionBiddingPage,
+});
+
+const marketEntryRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/simulator/market-entry',
+  component: MarketEntryPage,
+});
+
+const supplyChainBargainingRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/simulator/supply-chain-bargaining',
+  component: SupplyChainBargainingPage,
+});
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   aboutRoute,
-  modelsRoute,
   caseStudiesRoute,
   resourcesRoute,
-  quizRoute,
   contactRoute,
+  simulatorRoute,
+  prisonersDilemmaRoute,
+  auctionBiddingRoute,
+  marketEntryRoute,
+  supplyChainBargainingRoute,
 ]);
 
 const router = createRouter({ routeTree });

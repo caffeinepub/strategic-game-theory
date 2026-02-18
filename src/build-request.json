@@ -1,40 +1,144 @@
 {
   "kind": "build_request",
-  "title": "Add creator credit banner to top of Home page",
+  "title": "Remove all “Models/Explore Models” sections and refocus site on Simulator + Learning",
   "projectName": "Strategic Game Theory",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Add a full-width banner at the very top of the Home page (route \"/\") that displays the creator credits exactly as provided, above the existing hero section content in HomePage.tsx.",
+      "text": "Completely remove the “Models” / “Explore Models” section from site navigation, including desktop and mobile navigation, and ensure no navigation item routes to “/models”.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1",
-          "msg-2",
-          "msg-3"
+          "msg-4"
         ],
         "quotes": [
-          "Add\nCreated by:\nAlbin B Tom and Nikita Maria Bino\n6 BBA SBA B\nof Christ University, Yeshwanthpur\nAt the top of the website in the home tab",
-          "full‑width banner at the very top",
-          "build"
+          "Completely delete the “Models” or “Explore Models” option from:\n\nNavigation bar"
         ]
       },
       "acceptanceCriteria": [
-        "On the Home page, a visually distinct full-width banner appears before the hero section.",
-        "The banner text matches exactly (including line breaks/line separation): \"Created by:\", \"Albin B Tom and Nikita Maria Bino\", \"6 BBA SBA B\", \"of Christ University, Yeshwanthpur\".",
-        "The banner is responsive: on mobile and desktop it remains readable, does not overflow horizontally, and spans edge-to-edge across the viewport.",
-        "No creator banner appears on non-Home routes (e.g., /about, /models)."
+        "Site header navigation contains no item labeled “Models” and does not link to “/models”.",
+        "Mobile sheet/drawer navigation contains no item labeled “Models” and does not link to “/models”."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Remove the “/models” route and page from the router and application code, including deleting/retiring the InteractiveModelsPage and ensuring the app compiles and runs without it.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Update HTML, CSS, JavaScript/React code to remove:\nModel-related components\nRoutes/pages for models"
+        ]
+      },
+      "acceptanceCriteria": [
+        "`frontend/src/App.tsx` no longer imports or registers a route at path “/models”.",
+        "Navigating to “/models” does not show a models page (either route is removed and not present, or a not-found behavior occurs if the app has one).",
+        "Production build succeeds with no unused-import or missing-module errors related to removed models code."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Update the homepage to remove any “Explore Models” CTA/button and replace homepage primary actions with exactly: “Play Interactive Game”, “Start Learning”, and “View Case Studies”, while keeping the hero title “Game Theory for Strategic Business Decisions.”",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Homepage Update\n\nKeep the title “Game Theory for Strategic Business Decisions.”\n\nReplace any “Explore Models” button with:\n\nPlay Interactive Game\n\nStart Learning\n\nView Case Studies"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Homepage hero title remains “Game Theory for Strategic Business Decisions”.",
+        "Homepage contains no button labeled “Explore Models”.",
+        "Homepage presents CTAs labeled exactly “Play Interactive Game”, “Start Learning”, and “View Case Studies”.",
+        "The three CTAs navigate to the Simulator (`/simulator`), Learning Resources (`/resources`), and Case Studies (`/case-studies`) respectively.",
+        "Homepage marketing/CTA copy contains zero uses of the word “Models” (including “Interactive Models”)."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Remove all internal links, buttons, and references that send users to “/models” or mention “Models”, including the Case Studies page call-to-action and the footer quick links.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Completely delete the “Models” or “Explore Models” option from:\n\nInternal pages, links, and references\n\nEnsure no text, heading, or code related to “Models” remains anywhere in the website."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Case Studies page contains no CTA/button text that includes “Model”/“Models” and does not navigate to “/models”.",
+        "Footer “Quick Links” contains no link to “/models” and no link text “Interactive Models”/“Models”.",
+        "No visible page headings include “Interactive Models” or “Models”."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Delete or retire all model-related React components under `frontend/src/components/models/**` (and any related imports), ensuring no “models” calculators remain in the codebase or bundled output and that the rest of the site (Simulator, About, Case Studies, Learning Resources, Contact/Feedback) continues to function.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Update HTML, CSS, JavaScript/React code to remove:\nModel-related components"
+        ]
+      },
+      "acceptanceCriteria": [
+        "There is no remaining feature/page that renders auction calculators, market entry “model” calculators, or bargaining “model” calculators from `frontend/src/components/models/**`.",
+        "The app builds successfully without any imports from `frontend/src/components/models/**`.",
+        "Simulator pages under `/simulator/*` still render and function normally."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Refocus site flow and user-facing labels to emphasize only: About Game Theory, Interactive Game Simulator, Case Studies, Learning Resources, and Contact/Feedback; remove or de-emphasize other top-level navigation items that conflict with this focus (e.g., remove “Quiz” from the primary navigation if present).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Update the website flow to focus only on:\n\nAbout Game Theory\n\nInteractive Game Simulator\n\nCase Studies\n\nLearning Resources\n\nContact/Feedback"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Primary navigation contains only the focused sections (Home optional) and does not include “Models”.",
+        "If “Quiz” is present in primary navigation, it is removed from the nav to match the requested focus.",
+        "All remaining navigation items route correctly with no broken links."
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Audit and remove model-related learning assets and references, including any downloadable resource files or copy that explicitly centers “Interactive Models” (e.g., `frontend/public/assets/downloads/interactive-models-summaries.md`) so that the site has zero references to “Models”.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Provide the revised full website structure and updated code with:\n\nZero references to “Models”"
+        ]
+      },
+      "acceptanceCriteria": [
+        "No static download/resource title or filename is presented to users that includes “models”/“Interactive Models”.",
+        "A text search across frontend user-facing copy yields zero occurrences of “Models” / “Model” used as a section name or CTA (excluding unrelated words if any, but the term should not appear in UI)."
       ]
     }
   ],
   "constraints": [
-    "Do not modify any files under frontend/src/components/ui (Shadcn UI components are read-only).",
-    "Do not change backend state or add new backend APIs for this UI-only change."
+    "Frontend files in immutable paths must not be edited: `frontend/src/hooks/useInternetIdentity.ts`, `frontend/src/hooks/useInternetIdentity.tsx`, `frontend/src/hooks/useActor.ts`, `frontend/src/main.tsx`, and anything under `frontend/src/components/ui`.",
+    "Keep user-facing text in English."
   ],
   "nonGoals": [
-    "Adding the creator credit banner site-wide on every page.",
-    "Changing existing Home page hero text, CTA buttons, or navigation behavior."
+    "Adding new simulator game types or changing simulator logic beyond what is necessary to remove Models references.",
+    "Backend changes (feedback/profile actor) unless required by removal work.",
+    "Introducing new authentication methods beyond Internet Identity."
   ],
   "imageRequirements": {
     "required": [],
@@ -43,9 +147,7 @@
   "userProfileUpdate": {
     "goalsToAdd": [],
     "goalsToRemove": [],
-    "preferencesToAdd": [
-      "Use English for user-facing text."
-    ],
+    "preferencesToAdd": [],
     "preferencesToRemove": [],
     "miscToAdd": [],
     "miscToRemove": [],

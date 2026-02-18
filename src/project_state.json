@@ -1,18 +1,66 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Educational website with sections (Homepage, About, Interactive Models, Case Studies, Learning Resources, Quiz/Simulation, Downloads, Contact), plus a full-width creator credit banner at the very top of the Home page.",
-  "architectural_notes": [],
-  "known_issues": [
-    "Prior build/deploy attempt failed with 'Unable to create your app'; user requested rebuilding/redeploying."
+  "summary": "Modify an existing 'Game Theory in Business Strategy' website by completely removing all 'Models/Explore Models' content and refocusing navigation and pages on About, Interactive Game Simulator, Case Studies, Learning Resources, and Contact/Feedback.",
+  "architectural_notes": [
+    "Purge all Models-related UI, routes/pages, components, and references across HTML/CSS/JS (React) to ensure zero remaining mentions and smooth navigation after deletion."
   ],
-  "isFixRequest": true,
+  "known_issues": [],
+  "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-add-a-full-width-banner-at-the-very-top-of-the-home-page-route-that-displays-the-creator-credits-exactly-as-provided-above-the-existing-hero-section-content-in-homepage-tsx",
-      "title": "Add a full-width banner at the very top of the Home page (route \"/\") that displays the creator credits exactly as provided, above the existing hero section content in HomePage.tsx.",
+      "id": "feature-completely-remove-the-models-explore-models-section-from-site-navigation-including-desktop-and-mobile-navigation-and-ensure-no-navigation-item-routes-to-models",
+      "title": "Completely remove the “Models” / “Explore Models” section from site navigation, including desktop and mobile navigation, and ensure no navigation item routes to “/models”.",
       "reqIds": [
         "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-models-route-and-page-from-the-router-and-application-code-including-deleting-retiring-the-interactivemodelspage-and-ensuring-the-app-compiles-and-runs-without-it",
+      "title": "Remove the “/models” route and page from the router and application code, including deleting/retiring the InteractiveModelsPage and ensuring the app compiles and runs without it.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-homepage-to-remove-any-explore-models-cta-button-and-replace-homepage-primary-actions-with-exactly-play-interactive-game-start-learning-and-view-case-studies-while-keeping-the-hero-title-game-theory-for-strategic-business-decisions",
+      "title": "Update the homepage to remove any “Explore Models” CTA/button and replace homepage primary actions with exactly: “Play Interactive Game”, “Start Learning”, and “View Case Studies”, while keeping the hero title “Game Theory for Strategic Business Decisions.”",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-all-internal-links-buttons-and-references-that-send-users-to-models-or-mention-models-including-the-case-studies-page-call-to-action-and-the-footer-quick-links",
+      "title": "Remove all internal links, buttons, and references that send users to “/models” or mention “Models”, including the Case Studies page call-to-action and the footer quick links.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-delete-or-retire-all-model-related-react-components-under-frontend-src-components-models-and-any-related-imports-ensuring-no-models-calculators-remain-in-the-codebase-or-bundled-output-and-that-the-rest-of-the-site-simulator-about-case-studies-learning-resources-contact-feedback-continues-to-function",
+      "title": "Delete or retire all model-related React components under `frontend/src/components/models/**` (and any related imports), ensuring no “models” calculators remain in the codebase or bundled output and that the rest of the site (Simulator, About, Case Studies, Learning Resources, Contact/Feedback) continues to function.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-refocus-site-flow-and-user-facing-labels-to-emphasize-only-about-game-theory-interactive-game-simulator-case-studies-learning-resources-and-contact-feedback-remove-or-de-emphasize-other-top-level-navigation-items-that-conflict-with-this-focus-e-g-remove-quiz-from-the-primary-navigation-if-present",
+      "title": "Refocus site flow and user-facing labels to emphasize only: About Game Theory, Interactive Game Simulator, Case Studies, Learning Resources, and Contact/Feedback; remove or de-emphasize other top-level navigation items that conflict with this focus (e.g., remove “Quiz” from the primary navigation if present).",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-audit-and-remove-model-related-learning-assets-and-references-including-any-downloadable-resource-files-or-copy-that-explicitly-centers-interactive-models-e-g-frontend-public-assets-downloads-interactive-models-summaries-md-so-that-the-site-has-zero-references-to-models",
+      "title": "Audit and remove model-related learning assets and references, including any downloadable resource files or copy that explicitly centers “Interactive Models” (e.g., `frontend/public/assets/downloads/interactive-models-summaries.md`) so that the site has zero references to “Models”.",
+      "reqIds": [
+        "REQ-7"
       ],
       "version": 1
     }
@@ -20,11 +68,12 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Add a full-width banner at the very top of the Home page with creator credits: \"Created by: Albin B Tom and Nikita Maria Bino / 6 BBA SBA B / of Christ University, Yeshwanthpur\".",
+      "summary": "Remove all 'Models/Explore Models' navigation, buttons, pages/routes/components, links, and references; update homepage CTAs and site flow to focus on About, Interactive Game Simulator, Case Studies, Learning Resources, and Contact/Feedback while keeping the title 'Game Theory for Strategic Business Decisions'.",
       "reqIds": [],
       "status": "pending"
     }
   ],
+  "gameProjectType": "none",
   "projectName": "Strategic Game Theory",
   "clarification_mode": "instant",
   "clarification_rounds": 0

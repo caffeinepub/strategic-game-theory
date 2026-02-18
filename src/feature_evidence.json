@@ -2,8 +2,47 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-add-a-full-width-banner-at-the-very-top-of-the-home-page-route-that-displays-the-creator-credits-exactly-as-provided-above-the-existing-hero-section-content-in-homepage-tsx",
-      "featureTitle": "Add a full-width banner at the very top of the Home page (route \"/\") that displays the creator credits exactly as provided, above the existing hero section content in HomePage.tsx.",
+      "featureId": "feature-completely-remove-the-models-explore-models-section-from-site-navigation-including-desktop-and-mobile-navigation-and-ensure-no-navigation-item-routes-to-models",
+      "featureTitle": "Completely remove the “Models” / “Explore Models” section from site navigation, including desktop and mobile navigation, and ensure no navigation item routes to “/models”.",
+      "files": [
+        "frontend/src/components/SiteHeader.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-remove-the-models-route-and-page-from-the-router-and-application-code-including-deleting-retiring-the-interactivemodelspage-and-ensuring-the-app-compiles-and-runs-without-it",
+      "featureTitle": "Remove the “/models” route and page from the router and application code, including deleting/retiring the InteractiveModelsPage and ensuring the app compiles and runs without it.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/InteractiveModelsPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-homepage-to-remove-any-explore-models-cta-button-and-replace-homepage-primary-actions-with-exactly-play-interactive-game-start-learning-and-view-case-studies-while-keeping-the-hero-title-game-theory-for-strategic-business-decisions",
+      "featureTitle": "Update the homepage to remove any “Explore Models” CTA/button and replace homepage primary actions with exactly: “Play Interactive Game”, “Start Learning”, and “View Case Studies”, while keeping the hero title “Game Theory for Strategic Business Decisions.”",
       "files": [
         "frontend/src/pages/HomePage.tsx"
       ],
@@ -16,7 +55,95 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-1"
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-remove-all-internal-links-buttons-and-references-that-send-users-to-models-or-mention-models-including-the-case-studies-page-call-to-action-and-the-footer-quick-links",
+      "featureTitle": "Remove all internal links, buttons, and references that send users to “/models” or mention “Models”, including the Case Studies page call-to-action and the footer quick links.",
+      "files": [
+        "frontend/src/components/SiteFooter.tsx",
+        "frontend/src/pages/CaseStudiesPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-delete-or-retire-all-model-related-react-components-under-frontend-src-components-models-and-any-related-imports-ensuring-no-models-calculators-remain-in-the-codebase-or-bundled-output-and-that-the-rest-of-the-site-simulator-about-case-studies-learning-resources-contact-feedback-continues-to-function",
+      "featureTitle": "Delete or retire all model-related React components under `frontend/src/components/models/**` (and any related imports), ensuring no “models” calculators remain in the codebase or bundled output and that the rest of the site (Simulator, About, Case Studies, Learning Resources, Contact/Feedback) continues to function.",
+      "files": [
+        "frontend/src/components/models/ModelAssumptionsNote.tsx",
+        "frontend/src/components/models/auctions/AuctionModels.tsx",
+        "frontend/src/components/models/auctions/FirstPriceAuctionCalculator.tsx",
+        "frontend/src/components/models/auctions/SealedBidAuctionCalculator.tsx",
+        "frontend/src/components/models/auctions/SecondPriceAuctionCalculator.tsx",
+        "frontend/src/components/models/bargaining/SupplyChainBargainingModel.tsx",
+        "frontend/src/components/models/entry/MarketEntryGameModel.tsx",
+        "frontend/src/pages/InteractiveModelsPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-refocus-site-flow-and-user-facing-labels-to-emphasize-only-about-game-theory-interactive-game-simulator-case-studies-learning-resources-and-contact-feedback-remove-or-de-emphasize-other-top-level-navigation-items-that-conflict-with-this-focus-e-g-remove-quiz-from-the-primary-navigation-if-present",
+      "featureTitle": "Refocus site flow and user-facing labels to emphasize only: About Game Theory, Interactive Game Simulator, Case Studies, Learning Resources, and Contact/Feedback; remove or de-emphasize other top-level navigation items that conflict with this focus (e.g., remove “Quiz” from the primary navigation if present).",
+      "files": [
+        "frontend/src/components/SiteFooter.tsx",
+        "frontend/src/components/SiteHeader.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-audit-and-remove-model-related-learning-assets-and-references-including-any-downloadable-resource-files-or-copy-that-explicitly-centers-interactive-models-e-g-frontend-public-assets-downloads-interactive-models-summaries-md-so-that-the-site-has-zero-references-to-models",
+      "featureTitle": "Audit and remove model-related learning assets and references, including any downloadable resource files or copy that explicitly centers “Interactive Models” (e.g., `frontend/public/assets/downloads/interactive-models-summaries.md`) so that the site has zero references to “Models”.",
+      "files": [
+        "frontend/src/components/SiteFooter.tsx",
+        "frontend/src/pages/CaseStudiesPage.tsx",
+        "frontend/src/pages/HomePage.tsx",
+        "frontend/src/pages/LearningResourcesPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
       ],
       "confidence": "high"
     }

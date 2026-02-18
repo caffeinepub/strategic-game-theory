@@ -14,7 +14,7 @@ export default function SiteFooter() {
           <div>
             <h3 className="font-semibold text-lg mb-3">Strategic Game Theory</h3>
             <p className="text-sm text-muted-foreground">
-              Educational platform for game-theoretic models in business strategy.
+              Educational platform for game-theoretic frameworks in business strategy.
             </p>
           </div>
           <div>
@@ -26,8 +26,13 @@ export default function SiteFooter() {
                 </a>
               </li>
               <li>
-                <a href="/models" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Interactive Models
+                <a href="/simulator" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Interactive Game Simulator
+                </a>
+              </li>
+              <li>
+                <a href="/case-studies" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Case Studies
                 </a>
               </li>
               <li>

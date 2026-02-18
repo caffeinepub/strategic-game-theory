@@ -1,22 +1,187 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Creator credit banner on Home page",
+  "title": "Remove Models sections and refocus navigation/content on Simulator + Learning",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Add a visually distinct, full-width creator credit banner at the very top of the Home (/) page above the existing hero section, with exact provided text and responsive layout.",
+      "summary": "Remove the “Models/Explore Models” navigation item from desktop and mobile navigation so nothing links to /models.",
       "acceptanceCriteria": [
-        "On the Home page, a visually distinct full-width banner appears before the hero section.",
-        "The banner text matches exactly (including line breaks/line separation): \"Created by:\", \"Albin B Tom and Nikita Maria Bino\", \"6 BBA SBA B\", \"of Christ University, Yeshwanthpur\".",
-        "The banner is responsive: on mobile and desktop it remains readable, does not overflow horizontally, and spans edge-to-edge across the viewport.",
-        "No creator banner appears on non-Home routes (e.g., /about, /models)."
+        "Site header navigation contains no item labeled “Models” and does not link to “/models”.",
+        "Mobile sheet/drawer navigation contains no item labeled “Models” and does not link to “/models”."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/SiteHeader.tsx",
+          "operation": "modify",
+          "description": "Update the navItems list to remove the “Models” item (path “/models”) from both desktop and mobile navigation rendering; also adjust labels to match the refocused site sections. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Remove the /models route and retire the InteractiveModelsPage so the app compiles without models routing/code.",
+      "acceptanceCriteria": [
+        "`frontend/src/App.tsx` no longer imports or registers a route at path “/models”.",
+        "Navigating to “/models” does not show a models page (either route is removed and not present, or a not-found behavior occurs if the app has one).",
+        "Production build succeeds with no unused-import or missing-module errors related to removed models code."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Remove the InteractiveModelsPage import and the route registration for path “/models”, and remove it from the routeTree so the router no longer knows about /models."
+        },
+        {
+          "path": "frontend/src/pages/InteractiveModelsPage.tsx",
+          "operation": "delete",
+          "description": "Delete/retire the InteractiveModelsPage implementation since /models is being removed; ensure no remaining imports reference it."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Update the homepage hero to remove “Explore Models” and present exactly three primary CTAs: Play Interactive Game, Start Learning, View Case Studies; keep hero title text exactly as specified and remove “Models” wording from homepage CTA/marketing copy.",
+      "acceptanceCriteria": [
+        "Homepage hero title remains “Game Theory for Strategic Business Decisions”.",
+        "Homepage contains no button labeled “Explore Models”.",
+        "Homepage presents CTAs labeled exactly “Play Interactive Game”, “Start Learning”, and “View Case Studies”.",
+        "The three CTAs navigate to the Simulator (`/simulator`), Learning Resources (`/resources`), and Case Studies (`/case-studies`) respectively.",
+        "Homepage marketing/CTA copy contains zero uses of the word “Models” (including “Interactive Models”)."
       ],
       "file_operations": [
         {
           "path": "frontend/src/pages/HomePage.tsx",
           "operation": "modify",
-          "description": "Insert a new full-width banner element at the top of the HomePage return tree (immediately inside the outermost wrapper, before the existing Hero section). Render the creator credits as four separate lines to preserve the exact line separation, and style with Tailwind utility classes to ensure edge-to-edge width, readable typography at small/large breakpoints, and no horizontal overflow. Keep the banner only in HomePage so it does not appear on other routes. Do not modify any files under frontend/src/components/ui."
+          "description": "Update hero title to exactly “Game Theory for Strategic Business Decisions.” (including punctuation), remove the “Explore Models” CTA and replace primary actions with exactly: “Play Interactive Game” → /simulator, “Start Learning” → /resources, “View Case Studies” → /case-studies; revise hero/CTA section copy to remove all occurrences of “Models/Model/Interactive Models” while keeping the page’s intent and English language."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Remove all internal links/buttons/references that send users to /models or mention “Models”, including Case Studies CTAs and footer quick links.",
+      "acceptanceCriteria": [
+        "Case Studies page contains no CTA/button text that includes “Model”/“Models” and does not navigate to “/models”.",
+        "Footer “Quick Links” contains no link to “/models” and no link text “Interactive Models”/“Models”.",
+        "No visible page headings include “Interactive Models” or “Models”."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/CaseStudiesPage.tsx",
+          "operation": "modify",
+          "description": "Replace the Case Studies CTA that currently navigates to “/models” with a simulator-focused CTA that routes to the appropriate /simulator/* page based on the case study category, and ensure no visible CTA text includes “Model/Models/Interactive Models”."
+        },
+        {
+          "path": "frontend/src/components/SiteFooter.tsx",
+          "operation": "modify",
+          "description": "Remove the “Interactive Models” quick link and any /models href; ensure remaining quick links align to About Game Theory, Learning Resources, Simulator, Case Studies, and Contact/Feedback as appropriate, and remove “models” wording from footer descriptive copy."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Delete/retire all React components under frontend/src/components/models/** and remove any related imports so no models calculators remain.",
+      "acceptanceCriteria": [
+        "There is no remaining feature/page that renders auction calculators, market entry “model” calculators, or bargaining “model” calculators from `frontend/src/components/models/**`.",
+        "The app builds successfully without any imports from `frontend/src/components/models/**`.",
+        "Simulator pages under `/simulator/*` still render and function normally."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/models/auctions/AuctionModels.tsx",
+          "operation": "delete",
+          "description": "Delete this models-only component and ensure any remaining references are removed."
+        },
+        {
+          "path": "frontend/src/components/models/auctions/FirstPriceAuctionCalculator.tsx",
+          "operation": "delete",
+          "description": "Delete this models-only calculator component."
+        },
+        {
+          "path": "frontend/src/components/models/auctions/SealedBidAuctionCalculator.tsx",
+          "operation": "delete",
+          "description": "Delete this models-only calculator component."
+        },
+        {
+          "path": "frontend/src/components/models/auctions/SecondPriceAuctionCalculator.tsx",
+          "operation": "delete",
+          "description": "Delete this models-only calculator component."
+        },
+        {
+          "path": "frontend/src/components/models/bargaining/SupplyChainBargainingModel.tsx",
+          "operation": "delete",
+          "description": "Delete this models-only calculator component."
+        },
+        {
+          "path": "frontend/src/components/models/entry/MarketEntryGameModel.tsx",
+          "operation": "delete",
+          "description": "Delete this models-only calculator component."
+        },
+        {
+          "path": "frontend/src/components/models/ModelAssumptionsNote.tsx",
+          "operation": "delete",
+          "description": "Delete this models-only helper component."
+        },
+        {
+          "path": "frontend/src/pages/InteractiveModelsPage.tsx",
+          "operation": "delete",
+          "description": "(If not already removed by routing changes) Ensure InteractiveModelsPage is deleted since it depends on frontend/src/components/models/**."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Refocus primary navigation and user-facing labels to only About Game Theory, Interactive Game Simulator, Case Studies, Learning Resources, and Contact/Feedback; remove conflicting primary nav items such as Quiz if present.",
+      "acceptanceCriteria": [
+        "Primary navigation contains only the focused sections (Home optional) and does not include “Models”.",
+        "If “Quiz” is present in primary navigation, it is removed from the nav to match the requested focus.",
+        "All remaining navigation items route correctly with no broken links."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/SiteHeader.tsx",
+          "operation": "modify",
+          "description": "Update primary navigation items to match the requested focused sections (Home optional): About Game Theory, Interactive Game Simulator, Case Studies, Learning Resources, Contact/Feedback; remove “Quiz” from primary navigation if present, and ensure all remaining items route correctly. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/SiteFooter.tsx",
+          "operation": "modify",
+          "description": "Align footer link labels to the refocused site sections (and avoid any “Models/Quiz” emphasis) while keeping links functional."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Audit and remove model-related learning assets and references (including downloadable files and UI copy) so the site has zero references to “Models”.",
+      "acceptanceCriteria": [
+        "No static download/resource title or filename is presented to users that includes “models”/“Interactive Models”.",
+        "A text search across frontend user-facing copy yields zero occurrences of “Models” / “Model” used as a section name or CTA (excluding unrelated words if any, but the term should not appear in UI)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/LearningResourcesPage.tsx",
+          "operation": "modify",
+          "description": "Remove/replace the downloadable resource button and filename reference for “interactive-models-summaries.md” and update any visible resource titles/descriptions so they contain zero occurrences of “Model/Models/Interactive Models” in the UI."
+        },
+        {
+          "path": "frontend/public/assets/downloads/interactive-models-summaries.md",
+          "operation": "delete",
+          "description": "Delete this model-related downloadable asset so it is no longer available/presented."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Audit homepage user-facing copy for “Model/Models/Interactive Models” and replace with non-model terminology while preserving meaning (e.g., use “frameworks”, “simulations”, “tools”, etc.)."
+        },
+        {
+          "path": "frontend/src/pages/CaseStudiesPage.tsx",
+          "operation": "modify",
+          "description": "Audit Case Studies page CTA and any related copy to ensure it contains zero occurrences of “Model/Models/Interactive Models” in visible UI text."
+        },
+        {
+          "path": "frontend/src/components/SiteFooter.tsx",
+          "operation": "modify",
+          "description": "Audit footer visible text to ensure it contains zero occurrences of “Model/Models/Interactive Models”, including descriptive tagline and link labels."
         }
       ]
     }

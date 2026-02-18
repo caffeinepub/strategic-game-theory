@@ -12,15 +12,14 @@ export default function SiteHeader() {
 
   const navItems = [
     { label: 'Home', path: '/' },
-    { label: 'About', path: '/about' },
-    { label: 'Models', path: '/models' },
+    { label: 'About Game Theory', path: '/about' },
+    { label: 'Interactive Game Simulator', path: '/simulator' },
     { label: 'Case Studies', path: '/case-studies' },
-    { label: 'Resources', path: '/resources' },
-    { label: 'Quiz', path: '/quiz' },
+    { label: 'Learning Resources', path: '/resources' },
     { label: 'Contact', path: '/contact' },
   ];
 
-  const isActive = (path: string) => currentPath === path;
+  const isActive = (path: string) => currentPath === path || currentPath.startsWith(path + '/');
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">

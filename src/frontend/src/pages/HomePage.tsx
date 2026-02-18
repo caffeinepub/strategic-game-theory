@@ -24,7 +24,7 @@ export default function HomePage() {
     },
     {
       icon: Handshake,
-      title: 'Negotiation Models',
+      title: 'Negotiation Frameworks',
       description: 'Optimize supply chain bargaining and cooperative agreements.',
     },
   ];
@@ -61,17 +61,20 @@ export default function HomePage() {
               Game Theory for Strategic Business Decisions
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Develop game-theoretic models that address strategic business challenges. Learn how game theory helps
-              organizations make optimal competitive and cooperative decisions through analytical frameworks and
+              Develop game-theoretic frameworks that address strategic business challenges. Learn how game theory helps
+              organizations make optimal competitive and cooperative decisions through analytical tools and
               interactive simulations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" onClick={() => navigate({ to: '/models' })} className="text-lg px-8">
-                Explore Models
+              <Button size="lg" onClick={() => navigate({ to: '/simulator' })} className="text-lg px-8">
+                Play Interactive Game
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button size="lg" variant="outline" onClick={() => navigate({ to: '/quiz' })} className="text-lg px-8">
-                Start Simulation
+              <Button size="lg" variant="outline" onClick={() => navigate({ to: '/resources' })} className="text-lg px-8">
+                Start Learning
+              </Button>
+              <Button size="lg" variant="outline" onClick={() => navigate({ to: '/case-studies' })} className="text-lg px-8">
+                View Case Studies
               </Button>
             </div>
           </div>
@@ -112,8 +115,8 @@ export default function HomePage() {
             <CardHeader className="text-center pb-4">
               <CardTitle className="text-3xl md:text-4xl mb-4">Ready to Get Started?</CardTitle>
               <CardDescription className="text-primary-foreground/90 text-lg max-w-2xl mx-auto">
-                Explore interactive models, analyze real-world case studies, and test your understanding with our
-                comprehensive quiz system.
+                Explore interactive simulations, analyze real-world case studies, and test your understanding with our
+                comprehensive learning resources.
               </CardDescription>
             </CardHeader>
             <CardContent className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
